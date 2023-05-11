@@ -1,0 +1,13 @@
+import gspread 
+from oauth2client.service_account import ServiceAccountCredentials
+
+# Подключаемся к Google Sheets API с помощью учетных данных сервисного аккаунта 
+scope = ['https://www.googleapis.com/auth/spreadsheets'] 
+creds = ServiceAccountCredentials.from_json_keyfile_name('path/to/creds.json', scope) 
+client = gspread.authorize(creds) 
+
+# Открываем таблицу и выбираем лист 
+sheet = client.open('Название таблицы').worksheet('Sheet1') 
+
+# Читаем данные из ячейки A1 
+data = sheet.acell('A1').value print('Данные из ячейки A1:', data
